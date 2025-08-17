@@ -66,6 +66,12 @@ platform_do_upgrade() {
 	local board=$(board_name)
 
 	case "$board" in
+        qihoo,360t7)
+		CI_UBIPART="ubi"
+    		CI_KERNPART="kernel"
+      		CI_ROOTPART="rootfs"
+    		nand_do_upgrade "$1"
+    		;;
 	abt,asr3000|\
 	bananapi,bpi-r3|\
 	bananapi,bpi-r3-mini|\
@@ -80,7 +86,6 @@ platform_do_upgrade() {
 	h3c,magic-nx30-pro|\
 	imou,lc-hx3001|\
 	jcg,q30-pro|\
-	jdcloud,re-cp-03|\
 	konka,komi-a31|\
 	livinet,zr-3020-ubootmod|\
 	mediatek,mt7981-rfb|\
@@ -91,7 +96,6 @@ platform_do_upgrade() {
 	openwrt,one|\
 	netcore,n60|\
 	netcore,n60-pro|\
-	qihoo,360t7|\
 	routerich,ax3000-ubootmod|\
 	tplink,tl-xdr4288|\
 	tplink,tl-xdr6086|\
@@ -123,6 +127,8 @@ platform_do_upgrade() {
 	smartrg,sdg-8733|\
 	smartrg,sdg-8733a|\
 	huasifei,wh3000-pro|\
+	umi,uax3000e|\
+ 	jdcloud,re-cp-03|\
 	smartrg,sdg-8734)
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
@@ -241,6 +247,7 @@ platform_copy_config() {
 	smartrg,sdg-8733a|\
 	smartrg,sdg-8734|\
 	huasifei,wh3000-pro|\
+	umi,uax3000e|\
 	ubnt,unifi-6-plus)
 		emmc_copy_config
 		;;
